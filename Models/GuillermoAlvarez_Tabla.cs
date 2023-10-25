@@ -11,10 +11,10 @@ namespace GuillermoAlvarez_Examen1P.Models
         [Required(ErrorMessage = "El campo nombre es requerido")]
         public string GA_Nombre { get; set; }
 
-        [SeleccioneUnPlan]
+        [SeleccioneUnPlan(ErrorMessage = "Debes seleccionar al menos una")]
         public bool GA_ClienteTelevisor { get; set; }
 
-        [SeleccioneUnPlan]
+        [SeleccioneUnPlan(ErrorMessage = "Debes seleccionar al menos una")]
         public bool GA_ClieneInternet { get; set; }
 
         [Range(0.01, 9999.99)]
@@ -22,6 +22,9 @@ namespace GuillermoAlvarez_Examen1P.Models
         [verificarRango(ErrorMessage = "Nuestos planes tienen como valor mínimo 12 dolares")]
         public decimal GA_Precio { get; set;}
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [MayorEdad(ErrorMessage = "Debe ser mayor de edad para poder registrarse")]
         public DateTime GA_Fecha { get; set; }
 
     }
@@ -58,6 +61,24 @@ namespace GuillermoAlvarez_Examen1P.Models
             {
                 return ValidationResult.Success;
             }
+        }
+    }
+
+    public class MayorEdad  : ValidationAttribute
+    {
+
+        public override bool IsValid(object value)
+        {
+            if (value is DateTime fechaNacimiento)
+            {
+                var edad = DateTime.Today.Year - fechaNacimiento.Year;
+                if (fechaNacimiento.Date > DateTime.Today.AddYears(-edad))
+                {
+                    edad--;
+                }
+                return edad >= 18;
+            }
+            return false; 
         }
     }
 }
