@@ -1,0 +1,48 @@
+﻿@model GuillermoAlvarez_Examen1P.Models.GuillermoAlvarez_Tabla
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GuillermoAlvarez_Tabla</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GA_Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GA_Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GA_ClienteTelevisor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GA_ClienteTelevisor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GA_ClieneInternet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GA_ClieneInternet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GA_Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GA_Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GA_Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GA_Fecha)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.GA_Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
