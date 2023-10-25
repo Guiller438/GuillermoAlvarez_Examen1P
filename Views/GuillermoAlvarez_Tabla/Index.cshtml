@@ -4,6 +4,27 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #0000CD;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .table th {
+            background-color: #ADD8E6;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #ADD8E6;
+        }
+</style>
+
 <h1>Index</h1>
 
 <p>
@@ -31,29 +52,31 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GA_Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GA_ClienteTelevisor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GA_ClieneInternet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GA_Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GA_Fecha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.GA_Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GA_Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GA_Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GA_Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GA_ClienteTelevisor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GA_ClieneInternet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GA_Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GA_Fecha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.GA_Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.GA_Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.GA_Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
